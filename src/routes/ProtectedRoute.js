@@ -5,7 +5,12 @@ import AnimatedRoute from "./AnimatedRoutes";
 
 const ProtectedRoute = (props) => {
   const [isLoggedIn] = useContext(AppContext);
-  if (!isLoggedIn) return <Redirect to="/login" />;
+  if (!isLoggedIn)
+    return (
+      <AnimatedRoute>
+        <Redirect to="/login" />
+      </AnimatedRoute>
+    );
 
   return <AnimatedRoute>{props.children}</AnimatedRoute>;
 };
